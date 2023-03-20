@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  bot-tg:
+    build: ../..
+    command: ./wait-for-postgres.sh postgres_db ./bot-tg
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres_db
+    environment:
+      - POSTGRES_PASSWORD=2002
+      - BOT_T=${BOT_T}
+      - API_T=${API_T}
+  postgres_db:
+    image: postgres:latest
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      - POSTGRES_PASSWORD=2002
+    ports:
+      - 5432:5432
