@@ -1,5 +1,5 @@
 CREATE TABLE movies (
-    id SERIAL PRIMARY KEY avtoin,
+    id SERIAL PRIMARY KEY,
     user_id integer NOT NULL,
     movie_id integer NOT NULL,
     genre character varying(255) NOT NULL,

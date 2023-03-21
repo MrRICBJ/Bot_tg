@@ -61,7 +61,8 @@ func New(ctx context.Context, config config.Config) Storage {
 
 func dbConnect(ctx context.Context, cfg config.PostgresConfig) (*sqlx.DB, error) {
 	fmt.Println(cfg)
-	db, err := sqlx.ConnectContext(ctx, "postgres", "host=postgres_db port=5432 user=postgres dbname=postgres password=2002 sslmode=disable")
+	db, err := sqlx.ConnectContext(ctx, "postgres", fmt.Sprintf("host=%s port=%s user=%s dbname=%s password=%s sslmode=%s",
+		cfg.Host, cfg.Port, cfg.Username, cfg.DBName, cfg.Password, cfg.SSLMode))
 	if err != nil {
 		return nil, err
 	}
@@ -104,6 +105,7 @@ func (s Storage) Search(ctx context.Context, genre, id, page int) (*storage.Film
 		return nil, e.Wrap("translation error in json", err)
 	}
 
+	fmt.Println("afhu- ", len(searchRes.Items))
 	for _, film := range searchRes.Items {
 		if ok, err := s.IsExists(ctx, film.KinopoiskId, id, genre); ok == false && err == nil {
 			if film.NameRu == "" {

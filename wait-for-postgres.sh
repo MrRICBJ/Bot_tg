@@ -12,5 +12,7 @@ until PGPASSWORD=$POSTGRES_PASSWORD psql -h "$host" -U "postgres" -c '\q'; do
   sleep 1
 done
 
+#psql -U "postgres" -d "postgres" -f /docker-entrypoint-initdb.d/init.sql
+
 >&2 echo "Postgres is up - executing command"
 exec $cmd

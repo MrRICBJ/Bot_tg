@@ -19,4 +19,4 @@ services:
     environment:
       - POSTGRES_PASSWORD=2002
     ports:
-      - 5432:5432
+      - 5436:5432
