@@ -2,10 +2,10 @@ version: "3.8"
 
 services:
   bot-tg:
-    build: ../..
+    build: ./
     command: ./wait-for-postgres.sh postgres_db ./bot-tg
     ports:
-      - 8080:8080
+      - 8000:8000
     depends_on:
       - postgres_db
     environment:

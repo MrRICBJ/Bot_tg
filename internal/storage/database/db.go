@@ -60,8 +60,8 @@ func New(ctx context.Context, config config.Config) Storage {
 }
 
 func dbConnect(ctx context.Context, cfg config.PostgresConfig) (*sqlx.DB, error) {
-	db, err := sqlx.ConnectContext(ctx, "postgres", fmt.Sprintf("host=%s port=%s user=%s dbname=%s password=%s sslmode=%s",
-		cfg.Host, cfg.Port, cfg.Username, cfg.DBName, cfg.Password, cfg.SSLMode))
+	fmt.Println(cfg)
+	db, err := sqlx.ConnectContext(ctx, "postgres", "host=postgres_db port=5432 user=postgres dbname=postgres password=2002 sslmode=disable")
 	if err != nil {
 		return nil, err
 	}

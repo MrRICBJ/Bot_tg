@@ -31,6 +31,8 @@ func InitConfig() error {
 func MustLoad() Config {
 	tgBotTokenToken := os.Getenv("BOT_T")
 	apiKey := os.Getenv("API_T")
+	// tgBotTokenToken := "6169483507:AAGYU8mlzM5y1lFP4PCl8a7F8bL1-aWsMG8"
+	// apiKey := "69f3d684-9b2c-445f-9c01-d30174c0fd68"
 	if tgBotTokenToken == "" {
 		log.Fatal("Bot token is not specified")
 	}
