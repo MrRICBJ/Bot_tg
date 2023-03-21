@@ -12,5 +12,5 @@ git clone https://github.com/MrRICBJ/Bot_tg.git
 > https://web.telegram.org/k/#@BotFather
 # Запуск
 ```
-BOT_T="bot_t" API_T="api_t" docker compose up --build bot-tg
+BOT_T="bot_t" API_T="api_t" docker-compose up --build bot-tg
 ```
